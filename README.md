@@ -1,0 +1,1 @@
+This is a basic C implementation of various hashing algorithms, mainly done for my own learning. None of these implementations will be tested rigorously, so there is no guarantee they are bug-free.
