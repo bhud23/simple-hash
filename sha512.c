@@ -177,8 +177,8 @@ uint64_t *sha512(uint8_t *data, uint64_t data_size_bytes){ // returns array of 6
         hash[6] += temp_hash[g];
         hash[7] += temp_hash[h];
 
-        if (num_of_blocks > 1000){
-            if ((block % 10) == 0 || (block == num_of_blocks - 1)){
+        if (num_of_blocks > 1001){
+            if ((block % 100) == 0){
                 print_progress_bar((uint64_t) block, 50, 0, (uint64_t) (num_of_blocks - 1));
             }
         } else {
@@ -188,8 +188,8 @@ uint64_t *sha512(uint8_t *data, uint64_t data_size_bytes){ // returns array of 6
     printf("\nReturning blocks to the heap...\n");
     for (uint32_t i = 0; i < num_of_blocks; i++){
         free(data_blocks[i]);
-        if (num_of_blocks > 1000){
-            if ((i % 1000) == 0 || (i == num_of_blocks - 1)){
+        if (num_of_blocks > 1001){
+            if ((i % 100) == 0){
                 print_progress_bar((uint64_t) i, 50, 0, (uint64_t) (num_of_blocks - 1));
             }
         } else {

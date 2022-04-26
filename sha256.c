@@ -177,8 +177,16 @@ uint8_t *sha256(uint8_t *data, uint64_t data_size_bytes){
             print_progress_bar((uint64_t) block, 50, 0, (uint64_t) (num_of_blocks - 1));
         } 
     }
+    printf("\nReturning blocks to the heap...\n");
     for (uint32_t i = 0; i < num_of_blocks; i++){
-        free(data_blocks[i]); 
+        free(data_blocks[i]);
+        if (num_of_blocks > 1001){
+            if ((i % 100) == 0){
+                print_progress_bar((uint64_t) i, 50, 0, (uint64_t) (num_of_blocks - 1));
+            }
+        } else {
+            print_progress_bar((uint64_t) i, 50, 0, (uint64_t) (num_of_blocks - 1));
+        }
     }
     free(data_blocks);
     
